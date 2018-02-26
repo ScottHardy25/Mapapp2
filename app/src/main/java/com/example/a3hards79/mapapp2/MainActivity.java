@@ -17,7 +17,7 @@ import android.view.MenuItem;
 /*osmdroid lets us use other maps apart from google street map
 
 
-this needfs to be added to the build.gradle(module.app)
+this needs to be added to the build.gradle(module.app)
 with the code:
 dependencies {
 ======other dependencies
@@ -74,13 +74,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //this
     public boolean onCreateOptionsMenu(Menu choosemenu){
 
-        //whats the point of this?
-        MenuInflater inflater=getMenuInflater();
+        //this is easier to understand and quicker to type then
+        //getMenuInflater().inflate(R.menu.menu, choosemenu);
+
+        MenuInflater jeff=getMenuInflater();
         //R.menu.menu: The first menu is talking about the menu folder, the second menu
         // is talking about the menu.xml
-        inflater.inflate(R.menu.menu, choosemenu);
+
+        jeff.inflate(R.menu.menu, choosemenu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.choosemap) {
+
+            Intent intent = new Intent(this,MapChooseActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+        return  false;
     }
 }
